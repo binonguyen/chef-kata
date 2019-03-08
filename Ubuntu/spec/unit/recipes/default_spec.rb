@@ -33,7 +33,3 @@ describe 'Ubuntu::default' do
     end
   end
 end
-
-describe package('Nano') do
-  it { should be_installed }
-end
