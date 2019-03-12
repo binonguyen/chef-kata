@@ -15,41 +15,30 @@ file '/var/website/direction.txt' do
   action :create
 end
 
-file 'var/website/builder.txt' do
-  content "#{node['yourname']} build this"
+file '/var/website/builder.txt' do
+  content "#{node['yourname']} built this"
   action :create
 end
 
-remote_file '/var/website/logo.html' do
+remote_file '/var/website/logo.jpg' do
   source 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgQmQ0CYwU3cpFE6gEB82cp6TSIcBJSisax_HVvEfsgYHGBsO8kQ'
   action :create
 end
 
-chef_training_website 'command and git' do
+chef_training_website 'run command and git' do
   action :create
 end
 
-# execute 'create command file' do
-#   command 'echo ran command > /var/website/command.txt'
-#   not_if { ::File.exist?("/var/website/command.txt") }
-#   notifies :create, 'directory[/var/website/architect]', :immediately
-#   notifies :install, 'package[git]', :immediately
-#   notifies :run, 'bash[git pull]', :immediately
-# end
-#
-# directory '/var/website/architect' do
-#   action :nothing
-# end
-#
-# package 'git' do
-#   action :nothing
-# end
-#
-# bash 'git pull' do
-#   cwd '/var/website/architect'
-#   code <<-EOH
-#     git init
-#     git pull https://github.com/pages-themes/architect master
-#     EOH
-#   action :nothing
-# end
+m = data_bag_item('website', 'messages')
+
+file '/var/website/welcome.txt' do
+  content "#{m['welcomeMessage']}"
+  action :create
+end
+
+n = data_bag_item('users', 'file')
+
+file '/var/website/textuser.txt' do
+  content "#{n['comment']}"
+  action :create
+end

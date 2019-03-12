@@ -1,30 +1,27 @@
 resource_name :chef_training_website
 
-property :home, String
-
 action :create do
-  execute 'create command file' do
+
+  execute 'run command echo' do
     command 'echo ran command > /var/website/command.txt'
-    not_if { ::File.exist?("/var/website/command.txt") }
-    notifies :create, 'directory[/var/website/architect]', :immediately
+    not_if {::File.exist?("/var/website/command.txt")}
+    action :run
     notifies :install, 'package[git]', :immediately
-    notifies :run, 'bash[git pull]', :immediately
+    notifies :create, 'directory[/var/website/architect]', :immediately
+    notifies :run, 'bash[run command git]', :immediately
   end
-
-  directory '/var/website/architect' do
-    action :nothing
-  end
-
   package 'git' do
     action :nothing
   end
-
-  bash 'git pull' do
+  directory '/var/website/architect' do
+    action :nothing
+  end
+  bash 'run command git' do
     cwd '/var/website/architect'
     code <<-EOH
-      git init
-      git pull "#{node['link']}" master
-      EOH
+    git init
+    git pull "#{node['link']}" master
+    EOH
     action :nothing
   end
 
