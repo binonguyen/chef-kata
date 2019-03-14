@@ -1,4 +1,4 @@
-# 1os-hardening
+# chef-training
 
 TODO: Enter the cookbook description here.
 

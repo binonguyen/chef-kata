@@ -1,6 +1,6 @@
 # # encoding: utf-8
 
-# Inspec test for recipe chef-traning::default
+# Inspec test for recipe chef-training::default
 
 # The Inspec reference, with examples and extensive documentation, can be
 # found at http://inspec.io/docs/reference/resources/
@@ -16,16 +16,18 @@ end
 describe port(80), :skip do
   it { should_not be_listening }
 end
+
 describe package('nano') do
   it { should be_installed }
 end
+
 describe file('/var/website') do
   it { should exist }
 end
 describe file('/var/old-website') do
   it { should_not exist }
 end
-describe file('/var/website/directions.txt') do
+describe file('/var/website/direction.txt') do
   its('content') { should eq 'website goes here' }
   it { should exist }
 end
@@ -35,9 +37,6 @@ end
 describe file('/var/website/logo.jpg') do
   it { should exist }
 end
-describe file('/var/website/architect') do
+describe file('/var/website/command.txt') do
   it { should exist }
-end
-describe package('git') do
-  it { should be_installed }
 end
