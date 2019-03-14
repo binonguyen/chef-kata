@@ -1,10 +1,11 @@
+# # To learn more about Custom Resources, see https://docs.chef.io/custom_resources.html
 resource_name :chef_training_website
 
 action :create do 
     execute 'echo command' do
         command 'echo ran command > /var/website/command.txt'
         not_if {::File.exists?('/var/website/command.txt')}
-        notifies :create,'directory[/var/website/architect]', :immediately
+        notifies :create, 'directory[/var/website/architect]', :immediately
         notifies :install, 'package[git]', :immediately
         notifies :run, 'bash[git command]', :immediately
         action :run
