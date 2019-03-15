@@ -1,6 +1,7 @@
 name "pro"
-description "for PRO"
+description "for pro"
 cookbook_versions({
-    "chef-training" => "= 2.0.0",
+    "chef-training" => "= 3.0.0",
+
 })
-default_attributes "builder" => "Production"
+default_attributes "builder" => "Productions"

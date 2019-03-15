@@ -25,14 +25,10 @@ end
 describe directory('/var/old-website') do
   it { should_not exist }
 end
-describe file('/var/website/direction.txt') do
-  its('content') { should eq 'website goes here' }
+describe file('/var/website/directions.txt') do
   it { should exist }
 end
 describe file('/var/website/builder.txt') do
-  it { should exist }
-end
-describe file('/var/website/logo.jpg') do
   it { should exist }
 end
 describe file('/var/website/command.txt') do
