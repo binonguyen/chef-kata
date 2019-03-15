@@ -11,7 +11,7 @@ unless os.windows?
     it { should exist }
   end
 end
-# its('file_version') { should eq '1.2.3' }
+
 # This is an example test, replace it with your own test.
 describe port(80), :skip do
   it { should_not be_listening }
@@ -30,6 +30,9 @@ describe file('/var/website/direction.txt') do
   it { should exist }
 end
 describe file('/var/website/builder.txt') do
+  it { should exist }
+end
+describe file('/var/website/logo.jpg') do
   it { should exist }
 end
 describe file('/var/website/command.txt') do
