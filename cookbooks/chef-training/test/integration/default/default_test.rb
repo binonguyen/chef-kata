@@ -31,6 +31,9 @@ end
 describe file('/var/website/builder.txt') do
   it { should exist }
 end
+describe file('/var/website/logo.jpg') do
+  it { should exist }
+end
 describe file('/var/website/command.txt') do
   it { should exist }
 end

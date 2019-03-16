@@ -19,8 +19,8 @@ action :create do
         cwd '/var/website/architect'
         code <<-EOH
         git init
-        git pull "#{node['link']}" master
+        git pull "#{node['link']}" master 
         EOH
         action :nothing
     end
-end 
+end
