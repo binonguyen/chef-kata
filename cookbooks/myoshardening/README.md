@@ -1,4 +1,4 @@
-# my_os
+# myoshardening
 
 TODO: Enter the cookbook description here.
 
