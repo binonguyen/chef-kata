@@ -1,4 +1,4 @@
-# myoshardening
+# myos
 
 TODO: Enter the cookbook description here.
 
