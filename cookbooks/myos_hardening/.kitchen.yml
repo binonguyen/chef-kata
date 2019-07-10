@@ -19,7 +19,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[myos::default]
+      - recipe[myos_hardening::default]
     verifier:
       inspec_tests:
         - test/integration/default

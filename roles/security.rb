@@ -1,6 +1,6 @@
 name "security"
-description "chef"
+description "chef-kata role"
 run_list "recipe[os-hardening]"
-override_attributes({
-    "os-hardening" => { "auth" => {"uid_min" => "1234"}}
+override_attributes({   
+    "os-hardening" => { "auth" => { "uid_min" => 9999}}
 })
