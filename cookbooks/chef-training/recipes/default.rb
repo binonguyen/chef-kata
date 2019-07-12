@@ -1,3 +1,9 @@
+#
+# Cookbook:: chef-training
+# Recipe:: default
+#
+# Copyright:: 2019, The Authors, All Rights Reserved.
+
 package 'nano' do
     action :install
 end
@@ -43,20 +49,22 @@ end
 # execute 'echo command' do
 #     command 'echo ran command > /var/website/command.txt'
 #     not_if {::File.exist?('/var/website/command.txt')}
-#     notifies :install , 'package[git]', :immediately
 #     notifies :create, 'directory[/var/website/architect]', :immediately
-#     notifies :run, 'bash[git command]', :immediately
+    
+#     notifies :install, 'package[git]', :immediately
+    
+#     notifies :run,'bash[git command]', :immediately
+    
 #     action :run
-# end
-
-# package 'git' do
-#     action :nothing
 # end
 
 # directory '/var/website/architect' do
 #     owner 'root'
 #     group 'root'
 #     mode '0755'
+#     action :nothing
+# end
+# package 'git' do
 #     action :nothing
 # end
 
@@ -70,25 +78,15 @@ end
 
 chef_training_website 'custom resource' do
     action :create
-end 
-
-
-message = data_bag_item('website', 'messages')
-
+end
+m = data_bag_item('website','messages')
 file '/var/website/welcome.txt' do
-    content "#{message['welcomeMessage']}"
+    content "#{m['welcomeMessage']}"
     owner 'root'
     group 'root'
     mode '0755'
     action :create
 end
-
-
-    
-
-
-
-
 
 
 

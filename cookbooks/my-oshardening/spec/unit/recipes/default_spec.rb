@@ -1,12 +1,12 @@
 #
-# Cookbook:: myos_hardening
+# Cookbook:: my-oshardening
 # Spec:: default
 #
 # Copyright:: 2019, The Authors, All Rights Reserved.
 
 require 'spec_helper'
 
-describe 'myos_hardening::default' do
+describe 'my-oshardening::default' do
   context 'When all attributes are default, on Ubuntu 16.04' do
     let(:chef_run) do
       # for a complete list of available platforms and versions see:
