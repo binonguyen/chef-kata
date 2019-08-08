@@ -1,1 +1,0 @@
-default['chef-training']['my-name'] = 'Bino'
