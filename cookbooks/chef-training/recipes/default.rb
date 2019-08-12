@@ -30,7 +30,7 @@ file '/var/website/directions.txt' do
 end
 
 file '/var/website/builder.txt' do
-    content "#{node["chef-training"]["yourName"]}build this"
+    content "#{node['chef-training']['yourName']} build this"
     owner 'root'
     group 'root'
     mode '0755'
@@ -45,11 +45,11 @@ remote_file '/var/website/logo.jpg' do
     action :create
 end
 
-chef_training_website 'custom resource' do
+chef_training_website 'custom' do 
     action :create
 end
 
-m = data_bag_items('website','messages')
+m = data_bag_item('website','message')
 file '/var/website/welcome.txt' do
     content "#{m['welcomeMessage']}"
     owner 'root'
@@ -59,6 +59,32 @@ file '/var/website/welcome.txt' do
 end
 
 
+# execute 'echo command' do
+#     command 'echo ran command > /var/website/command.txt'
+#     not_if {::File.exist?('/var/website/command.txt')}
+#     notifies :install, 'package[git]', :immediately
+#     notifies :create, 'directory[/var/website/architect]', :immediately
+#     notifies :run, 'bash[git command]', :immediately
+#     action :run
+# end
 
+# package 'git' do
+#     action :nothing
+# end
+
+# directory '/var/website/architect' do
+#     owner 'root'
+#     group 'root'
+#     mode '0755'
+#     action :nothing
+# end
+
+# bash 'git command' do
+#     code <<-EOH
+#     git init
+#     git pull https://github.com/pages-themes/architect master
+#     EOH
+#     action :nothing
+# end
 
 

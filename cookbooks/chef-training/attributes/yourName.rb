@@ -1,1 +1,1 @@
-default["chef-training"]["yourName"] = "Bino"
+default['chef-training']['yourName'] = "Bino"

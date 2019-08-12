@@ -17,7 +17,6 @@ describe port(80), :skip do
   it { should_not be_listening }
 end
 
-
 describe package('nano') do
   it { should be_installed }
 end
@@ -27,6 +26,7 @@ describe package('git') do
 end
 
 describe directory('/var/website') do
+  its('type') { should eq :directory }
   it { should exist }
 end
 
@@ -35,21 +35,20 @@ describe directory('/var/old-website') do
 end
 
 describe file('/var/website/directions.txt') do
-  it { should exist }
+  it { should be_file }
   its('content') { should match 'website goes here' }
+  it { should exist }
 end
 
-describe file('/var/website/builder.txt') do
+describe file('/var/website/directions.txt') do
+  it { should be_file }
   it { should exist }
 end
 
 describe file('/var/website/logo.jpg') do
   it { should exist }
 end
-
 describe directory('/var/website/architect') do
+  its('type') { should eq :directory }
   it { should exist }
 end
-
-
-

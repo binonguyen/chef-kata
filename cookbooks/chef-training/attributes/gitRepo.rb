@@ -1,1 +1,0 @@
-default["chef-training"]["gitRepo"] = "https://github.com/pages-themes/architect"
